@@ -83,4 +83,4 @@ Current implementation will not preserve error exit code (>0) and any exit
 code >0 will cause program to exit with exit code of 1.
 
 **Program should end all it's goroutines correctly before calling exit.
-Otherwise, this implementation will hang in waiting goroutines to finish. **
+Otherwise, this implementation will hang in waiting goroutines to finish.**
