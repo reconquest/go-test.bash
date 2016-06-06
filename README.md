@@ -82,4 +82,5 @@ After that step coverage will be available at coverage.html file.
 Current implementation will not preserve error exit code (>0) and any exit
 code >0 will cause program to exit with exit code of 1.
 
-**If program exits with exit, then coverage will not be preserved for that run.**
+**Program should end all it's goroutines correctly before calling exit.
+Otherwise, this implementation will hang in waiting goroutines to finish. **
