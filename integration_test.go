@@ -10,7 +10,7 @@ import (
 func TestWithCoverage(t *testing.T) {
 	exit = func(code int) {
 		if code > 0 {
-			t.Fail()
+			t.FailNow()
 		} else {
 			t.SkipNow()
 		}
