@@ -27,7 +27,9 @@ go-test:set-output-dir() {
 go-test:run() {
     local target="$_go_test_coverage_dir/$_go_test_filename_prefix$RANDOM"
 
-    "$1" -test.coverprofile="$target" -- "${@:2}" | sed '/^PASS$/,$d'
+    "$1" -test.coverprofile="$target" -- "${@:2}" \
+        | sed -r '/^(PASS|FAIL)$/,$d' \
+        | sed -r '/^--- (PASS|FAIL):/d'
 }
 
 go-test:set-prefix() {
