@@ -13,7 +13,7 @@ import:source github.com/reconquest/test-runner.bash
 
 trap :cleanup EXIT
 
-if ! which gocovmerge 2>/dev/null >/dev/null; then
+if ! which gocovmerge &>/dev/null; then
     printf "gocovmerge binary required for that library.\n"
     exit 1
 fi
