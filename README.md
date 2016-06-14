@@ -2,6 +2,8 @@
 
 Helper for running integration tests for Golang apps with coverage.
 
+![go-test](https://cloud.githubusercontent.com/assets/674812/16035798/d557abdc-323a-11e6-83ba-0df288b40829.gif)
+
 # Installation
 
 Install [gocovmerge](https://github.com/wadey/gocovmerge) first.
