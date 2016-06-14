@@ -51,7 +51,7 @@ go-test:wipe-coverage() {
         ln -s "$_go_test_source_dir/integration_test.go" .
         trap "unlink integration_test.go" EXIT
 
-        go test -cover -x -c -tags integration -o"${@}" 2>&1 \
+        go test -cover -x -c -tags integration -o "${@}" 2>&1 \
             | sed -nr '/^#/,$p' \
             | sed -r 's@.*/_obj_test/@@'
     )

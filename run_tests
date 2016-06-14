@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cd $(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
+source "vendor/github.com/reconquest/import.bash/import.bash"
+
+import:source github.com/reconquest/test-runner.bash
+
+:cleanup() {
+    :
+}
+
+trap :cleanup EXIT
+
+if ! which gocovmerge 2>/dev/null >/dev/null; then
+    printf "gocovmerge binary required for that library.\n"
+    exit 1
+fi
+
+test-runner:run "${@}"
