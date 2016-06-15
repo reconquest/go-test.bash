@@ -1,2 +1,4 @@
 language: go
 script: ./run_tests -vvvvvvA
+before_install:
+    go get github.com/wadey/gocovmerge
