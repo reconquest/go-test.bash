@@ -1,4 +1,4 @@
-# go test [![build](https://travis-ci.org/reconquest/go-test.bash.svg)](https://travis-ci.org/reconquest/go-test.bash.svg)
+# go test [![build](https://travis-ci.org/reconquest/go-test.bash.svg)](https://travis-ci.org/reconquest/go-test.bash)
 
 Helper for running integration tests for Golang apps with coverage.
 
