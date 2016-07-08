@@ -1,5 +1,6 @@
 _go_test_output_dir="./"
 _go_test_filename_prefix=""
+_go_test_entrypoint_function="TestWithCoverage"
 _go_test_coverage_dir="$_go_test_output_dir/cover/"
 _go_test_source_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
@@ -28,7 +29,7 @@ go-test:run() {
     local target="$_go_test_coverage_dir/$_go_test_filename_prefix$RANDOM"
 
     "$1" \
-        -test.run="TestWithCoverage" -test.coverprofile="$target" \
+        -test.run="$_go_test_entrypoint_function" -test.coverprofile="$target" \
         -- "${@:2}" \
             | sed -ur '/^(PASS|FAIL)$/,$d' \
             | sed -ur '/^--- (PASS|FAIL):/d'
@@ -36,6 +37,10 @@ go-test:run() {
 
 go-test:set-prefix() {
     _go_test_filename_prefix="$1"
+}
+
+go-test:set-entrypoint-function() {
+    _go_test_entrypoint_function="$1"
 }
 
 go-test:merge-coverage() {
