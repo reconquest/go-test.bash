@@ -3,6 +3,7 @@ _go_test_filename_prefix=""
 _go_test_entrypoint_function="TestWithCoverage"
 _go_test_coverage_dir="$_go_test_output_dir/cover/"
 _go_test_source_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
+_go_test_runner=""
 
 go-test:build() {
     go-test:wipe-coverage
@@ -25,10 +26,16 @@ go-test:set-output-dir() {
     _go_test_coverage_dir="$_go_test_output_dir/.cover/"
 }
 
+go-test:set-runner() {
+    local runner="$1"
+
+    _go_test_runner="$runner"
+}
+
 go-test:run() {
     local target="$_go_test_coverage_dir/$_go_test_filename_prefix$RANDOM"
 
-    "$1" \
+    $_go_test_runner "$1" \
         -test.run="$_go_test_entrypoint_function" -test.coverprofile="$target" \
         -- "${@:2}" \
             | sed -ur '/^(PASS|FAIL)$/,$d' \
