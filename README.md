@@ -27,7 +27,7 @@ All following exit's should be done via function `exit`.
 ## Importing via [imports.bash](https://github.com/reconquest/import.bash)
 
 ```bash
-import github.com/reconquest/go-test
+import:use github.com/reconquest/go-test
 ```
 
 ## Makefile (optional)
